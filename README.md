@@ -66,7 +66,7 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed manual setup instructions.
 5. Start: `npm run dev`
 
 The app will be available at:
-- Frontend: http://localhost:3000
+- Frontend: http://localhost:3001 (or 3000 if available)
 - Backend: http://localhost:5000
 
 ### Environment Variables
@@ -81,6 +81,12 @@ DB_NAME=loder
 DB_PASSWORD=your_password
 DB_PORT=5432
 ```
+
+## Deployment
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions to:
+- **Render**: Backend and PostgreSQL database
+- **Vercel**: Frontend React application
 
 ## Usage
 
@@ -99,11 +105,10 @@ DB_PORT=5432
 
 ## Development
 
-- Frontend runs on port 3000
+- Frontend runs on port 3001 (or 3000 if available)
 - Backend runs on port 5000
 - Make sure PostgreSQL is running before starting the backend
 
 ## License
 
 ISC
-
