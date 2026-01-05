@@ -22,14 +22,6 @@ const Navbar = () => {
 
           <div className="flex items-center space-x-6">
             <Link
-              to="/"
-              className={`hover:text-safety-yellow transition-colors ${
-                isActive('/') ? 'text-safety-yellow' : ''
-              }`}
-            >
-              {t('nav.home')}
-            </Link>
-            <Link
               to="/browse"
               className={`hover:text-safety-yellow transition-colors ${
                 isActive('/browse') ? 'text-safety-yellow' : ''

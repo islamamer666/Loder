@@ -10,7 +10,7 @@ const Logo = ({ showText = true, className = "", textColor = "text-safety-yellow
       </div>
       {/* LODER Text */}
       {showText && (
-        <span className={`text-2xl font-bold ${textColor}`}>LODER</span>
+        <span className={`text-2xl font-black ${textColor}`}>LODER</span>
       )}
     </Link>
   );
