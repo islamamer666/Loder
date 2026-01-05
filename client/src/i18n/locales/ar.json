@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "browse": "تصفح المعدات",
+    "list": "إضافة معدات",
+    "language": "اللغة"
+  },
+  "home": {
+    "title": "ابحث عن معدات البناء للإيجار",
+    "subtitle": "تصفح آلاف قوائم معدات البناء من الملاك حول العالم",
+    "searchPlaceholder": "ابحث عن المعدات...",
+    "locationPlaceholder": "الموقع",
+    "searchButton": "بحث",
+    "browseByCategory": "تصفح حسب الفئة",
+    "featuredEquipment": "معدات مميزة"
+  },
+  "equipment": {
+    "dailyRate": "السعر اليومي",
+    "location": "الموقع",
+    "contactOwner": "اتصل بالمالك",
+    "description": "الوصف",
+    "specifications": "المواصفات",
+    "available": "متاح",
+    "unavailable": "غير متاح",
+    "viewDetails": "عرض التفاصيل"
+  },
+  "listing": {
+    "title": "أضف معداتك",
+    "subtitle": "وصل إلى آلاف المقاولين الذين يبحثون عن المعدات",
+    "equipmentTitle": "عنوان المعدات",
+    "titlePlaceholder": "مثال: حفارة كاتربيلر 320D",
+    "category": "الفئة",
+    "selectCategory": "اختر الفئة",
+    "description": "الوصف",
+    "descriptionPlaceholder": "اوصف معداتك وحالتها وأي ميزات خاصة...",
+    "dailyRate": "السعر اليومي",
+    "ratePlaceholder": "أدخل سعر الإيجار اليومي",
+    "location": "الموقع",
+    "locationPlaceholder": "المدينة، الدولة",
+    "ownerName": "اسمك",
+    "ownerEmail": "البريد الإلكتروني",
+    "ownerPhone": "رقم الهاتف",
+    "images": "صور المعدات",
+    "uploadImages": "رفع الصور",
+    "submit": "إرسال القائمة",
+    "success": "تم إضافة المعدات بنجاح!",
+    "error": "فشل في إضافة المعدات. يرجى المحاولة مرة أخرى."
+  },
+  "details": {
+    "contactInfo": "معلومات الاتصال",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "back": "العودة للتصفح"
+  },
+  "category": {
+    "all": "جميع الفئات"
+  }
+}
+

@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "home": "Home",
+    "browse": "Browse Equipment",
+    "list": "List Equipment",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Find Construction Equipment for Rent",
+    "subtitle": "Browse thousands of construction equipment listings from owners worldwide",
+    "searchPlaceholder": "Search equipment...",
+    "locationPlaceholder": "Location",
+    "searchButton": "Search",
+    "browseByCategory": "Browse by Category",
+    "featuredEquipment": "Featured Equipment"
+  },
+  "equipment": {
+    "dailyRate": "Daily Rate",
+    "location": "Location",
+    "contactOwner": "Contact Owner",
+    "description": "Description",
+    "specifications": "Specifications",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "viewDetails": "View Details"
+  },
+  "listing": {
+    "title": "List Your Equipment",
+    "subtitle": "Reach thousands of contractors looking for equipment",
+    "equipmentTitle": "Equipment Title",
+    "titlePlaceholder": "e.g., Caterpillar 320D Excavator",
+    "category": "Category",
+    "selectCategory": "Select Category",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe your equipment, condition, and any special features...",
+    "dailyRate": "Daily Rate",
+    "ratePlaceholder": "Enter daily rental rate",
+    "location": "Location",
+    "locationPlaceholder": "City, Country",
+    "ownerName": "Your Name",
+    "ownerEmail": "Email",
+    "ownerPhone": "Phone Number",
+    "images": "Equipment Images",
+    "uploadImages": "Upload Images",
+    "submit": "Submit Listing",
+    "success": "Equipment listed successfully!",
+    "error": "Failed to list equipment. Please try again."
+  },
+  "details": {
+    "contactInfo": "Contact Information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "back": "Back to Browse"
+  },
+  "category": {
+    "all": "All Categories"
+  }
+}
+
