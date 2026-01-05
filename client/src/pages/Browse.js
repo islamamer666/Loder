@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
@@ -22,10 +22,6 @@ const Browse = () => {
     fetchCategories();
   }, []);
 
-  useEffect(() => {
-    fetchEquipment();
-  }, [filters]);
-
   const fetchCategories = async () => {
     try {
       const response = await axios.get(`${API_URL}/categories`);
@@ -35,7 +31,7 @@ const Browse = () => {
     }
   };
 
-  const fetchEquipment = async () => {
+  const fetchEquipment = useCallback(async () => {
     setLoading(true);
     try {
       const params = new URLSearchParams();
@@ -50,7 +46,11 @@ const Browse = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filters]);
+
+  useEffect(() => {
+    fetchEquipment();
+  }, [fetchEquipment]);
 
   const handleFilterChange = (key, value) => {
     setFilters({ ...filters, [key]: value });
