@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import CategoryCard from '../components/CategoryCard';
 import EquipmentCard from '../components/EquipmentCard';
+import heroBackground from '../images/hero-background.png';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
@@ -52,7 +53,7 @@ const Home = () => {
       <section 
         className="relative min-h-[600px] flex items-center justify-center bg-cover bg-center bg-no-repeat py-20 bg-gray-800"
         style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL || ''}/images/hero-background.png)`
+          backgroundImage: `url(${heroBackground})`
         }}
       >
         {/* Dark Overlay for better text readability */}
