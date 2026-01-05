@@ -50,9 +50,9 @@ const Home = () => {
     <div>
       {/* Hero Section with Background Image */}
       <section 
-        className="relative min-h-[600px] flex items-center justify-center bg-cover bg-center bg-no-repeat py-20"
+        className="relative min-h-[600px] flex items-center justify-center bg-cover bg-center bg-no-repeat py-20 bg-gray-800"
         style={{
-          backgroundImage: 'url(/images/hero-background.png)'
+          backgroundImage: `url(${process.env.PUBLIC_URL || ''}/images/hero-background.png)`
         }}
       >
         {/* Dark Overlay for better text readability */}
