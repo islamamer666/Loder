@@ -22,9 +22,9 @@ This guide explains how to deploy the Loder application to Render (backend + dat
    - **Plan**: Free (or paid for production)
 4. Click **"Create Database"**
 5. **Important**: Save the connection details shown:
-   - Internal Database URL
-   - External Database URL
-   - Host, Port, Database, User, Password
+   - Internal Database URL= postgresql://loder:w7DCz7kfRgrm5VICmA4U87EwBP39tVTl@dpg-d5dpi55actks73catijg-a/loder
+   - External Database URL= postgresql://loder:w7DCz7kfRgrm5VICmA4U87EwBP39tVTl@dpg-d5dpi55actks73catijg-a.frankfurt-postgres.render.com/loder
+   - Host, Port=5432, Database=loder, User=loder, Password=w7DCz7kfRgrm5VICmA4U87EwBP39tVTl
 
 ### Step 2: Deploy Backend Service
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Analytics } from '@vercel/analytics/react';
 import './i18n/config';
 import './App.css';
 
@@ -33,6 +34,7 @@ function App() {
         </main>
         <Footer />
       </div>
+      <Analytics />
     </Router>
   );
 }
