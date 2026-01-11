@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "remove-all-equipment": "node remove-all-equipment.js"
   },
   "dependencies": {
     "express": "^4.18.2",
