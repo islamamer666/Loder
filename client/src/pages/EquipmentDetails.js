@@ -100,11 +100,38 @@ const EquipmentDetails = () => {
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">{t('equipment.dailyRate')}</p>
-                  <p className="text-3xl font-bold text-safety-yellow">
-                    ${equipment.daily_rate}
-                    <span className="text-lg text-gray-600">/day</span>
-                  </p>
+                  {equipment.listing_type === 'sell' ? (
+                    <>
+                      <p className="text-sm text-gray-600 mb-1">{t('equipment.forSale')}</p>
+                      <p className="text-3xl font-bold text-safety-yellow">
+                        ${equipment.price}
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-sm text-gray-600 mb-1">{t('equipment.forRent')}</p>
+                      <div className="text-3xl font-bold text-safety-yellow">
+                        {equipment.hourly_rate && (
+                          <div className="mb-2">
+                            ${equipment.hourly_rate}
+                            <span className="text-lg text-gray-600">/hr</span>
+                          </div>
+                        )}
+                        {equipment.monthly_rate && (
+                          <div>
+                            ${equipment.monthly_rate}
+                            <span className="text-lg text-gray-600">/mo</span>
+                          </div>
+                        )}
+                        {!equipment.hourly_rate && !equipment.monthly_rate && equipment.daily_rate && (
+                          <div>
+                            ${equipment.daily_rate}
+                            <span className="text-lg text-gray-600">/day</span>
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  )}
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-gray-600 mb-1">{t('equipment.location')}</p>

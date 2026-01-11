@@ -35,11 +35,30 @@ const EquipmentCard = ({ equipment }) => {
         </p>
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-xs text-gray-500 mb-1">{t('equipment.dailyRate')}</p>
-            <p className="text-xl font-bold text-safety-yellow">
-              ${equipment.daily_rate}
-              <span className="text-sm text-gray-600">/day</span>
-            </p>
+            {equipment.listing_type === 'sell' ? (
+              <>
+                <p className="text-xs text-gray-500 mb-1">{t('equipment.forSale')}</p>
+                <p className="text-xl font-bold text-safety-yellow">
+                  ${equipment.price}
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-xs text-gray-500 mb-1">
+                  {equipment.hourly_rate && equipment.monthly_rate 
+                    ? t('equipment.hourlyRate') + ' / ' + t('equipment.monthlyRate')
+                    : equipment.hourly_rate 
+                      ? t('equipment.hourlyRate')
+                      : t('equipment.monthlyRate')}
+                </p>
+                <p className="text-xl font-bold text-safety-yellow">
+                  {equipment.hourly_rate && `$${equipment.hourly_rate}/hr`}
+                  {equipment.hourly_rate && equipment.monthly_rate && ' / '}
+                  {equipment.monthly_rate && `$${equipment.monthly_rate}/mo`}
+                  {!equipment.hourly_rate && !equipment.monthly_rate && equipment.daily_rate && `$${equipment.daily_rate}/day`}
+                </p>
+              </>
+            )}
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-500 mb-1">{t('equipment.location')}</p>

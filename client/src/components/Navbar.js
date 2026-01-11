@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Logo />
 
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-10">
             <Link
               to="/browse"
               className={`hover:text-safety-yellow transition-colors ${

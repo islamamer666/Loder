@@ -1,43 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
-import CategoryCard from '../components/CategoryCard';
-import EquipmentCard from '../components/EquipmentCard';
 import heroBackground from '../images/hero-background.png';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const Home = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [categories, setCategories] = useState([]);
-  const [featuredEquipment, setFeaturedEquipment] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [locationQuery, setLocationQuery] = useState('');
-
-  useEffect(() => {
-    fetchCategories();
-    fetchFeaturedEquipment();
-  }, []);
-
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/categories`);
-      setCategories(response.data);
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-    }
-  };
-
-  const fetchFeaturedEquipment = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/equipment?limit=6`);
-      setFeaturedEquipment(response.data.slice(0, 6));
-    } catch (error) {
-      console.error('Error fetching featured equipment:', error);
-    }
-  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -94,38 +64,6 @@ const Home = () => {
               </div>
             </form>
           </div>
-        </div>
-      </section>
-
-      {/* Categories Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-charcoal-grey mb-8 text-center">
-            {t('home.browseByCategory')}
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {categories.map((category) => (
-              <CategoryCard key={category.id} category={category} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Equipment Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-charcoal-grey mb-8 text-center">
-            {t('home.featuredEquipment')}
-          </h2>
-          {featuredEquipment.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredEquipment.map((equipment) => (
-                <EquipmentCard key={equipment.id} equipment={equipment} />
-              ))}
-            </div>
-          ) : (
-            <p className="text-center text-gray-600">No equipment listings yet.</p>
-          )}
         </div>
       </section>
     </div>

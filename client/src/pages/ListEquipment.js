@@ -15,6 +15,10 @@ const ListEquipment = () => {
     title: '',
     description: '',
     category_id: '',
+    listing_type: 'rent',
+    price: '',
+    hourly_rate: '',
+    monthly_rate: '',
     daily_rate: '',
     location: '',
     owner_name: '',
@@ -57,6 +61,13 @@ const ListEquipment = () => {
     setLoading(true);
     setMessage({ type: '', text: '' });
 
+    // Validation: If rent, at least one rate must be provided
+    if (formData.listing_type === 'rent' && !formData.hourly_rate && !formData.monthly_rate) {
+      setMessage({ type: 'error', text: t('listing.rateRequired') });
+      setLoading(false);
+      return;
+    }
+
     try {
       await axios.post(`${API_URL}/equipment`, formData);
       setMessage({ type: 'success', text: t('listing.success') });
@@ -64,6 +75,10 @@ const ListEquipment = () => {
         title: '',
         description: '',
         category_id: '',
+        listing_type: 'rent',
+        price: '',
+        hourly_rate: '',
+        monthly_rate: '',
         daily_rate: '',
         location: '',
         owner_name: '',
@@ -155,38 +170,87 @@ const ListEquipment = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-charcoal-grey mb-2">
+              {t('listing.listingType')} *
+            </label>
+            <select
+              name="listing_type"
+              value={formData.listing_type}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
+            >
+              <option value="rent">{t('listing.rent')}</option>
+              <option value="sell">{t('listing.sell')}</option>
+            </select>
+          </div>
+
+          {formData.listing_type === 'sell' ? (
             <div>
               <label className="block text-sm font-medium text-charcoal-grey mb-2">
-                {t('listing.dailyRate')} *
+                {t('listing.price')} *
               </label>
               <input
                 type="number"
-                name="daily_rate"
-                value={formData.daily_rate}
+                name="price"
+                value={formData.price}
                 onChange={handleChange}
-                placeholder={t('listing.ratePlaceholder')}
-                required
+                placeholder={t('listing.pricePlaceholder')}
+                required={formData.listing_type === 'sell'}
                 min="0"
                 step="0.01"
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
               />
             </div>
-
-            <div>
-              <label className="block text-sm font-medium text-charcoal-grey mb-2">
-                {t('listing.location')} *
-              </label>
-              <input
-                type="text"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
-                placeholder={t('listing.locationPlaceholder')}
-                required
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
-              />
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-charcoal-grey mb-2">
+                  {t('listing.hourlyRate')}
+                </label>
+                <input
+                  type="number"
+                  name="hourly_rate"
+                  value={formData.hourly_rate}
+                  onChange={handleChange}
+                  placeholder={t('listing.hourlyRatePlaceholder')}
+                  min="0"
+                  step="0.01"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-charcoal-grey mb-2">
+                  {t('listing.monthlyRate')}
+                </label>
+                <input
+                  type="number"
+                  name="monthly_rate"
+                  value={formData.monthly_rate}
+                  onChange={handleChange}
+                  placeholder={t('listing.monthlyRatePlaceholder')}
+                  min="0"
+                  step="0.01"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
+                />
+              </div>
             </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-medium text-charcoal-grey mb-2">
+              {t('listing.location')} *
+            </label>
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder={t('listing.locationPlaceholder')}
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
+            />
           </div>
 
           <div className="border-t border-gray-200 pt-6">

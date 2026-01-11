@@ -40,12 +40,12 @@ This guide explains how to deploy the Loder application to Render (backend + dat
    ```
    NODE_ENV=production
    PORT=10000
-   DB_USER=<from database connection details>
-   DB_HOST=<from database connection details>
-   DB_NAME=loder
-   DB_PASSWORD=<from database connection details>
+   DB_USER=loder
+   DB_HOST=dpg-d5dtcddactks73cddipg-a
+   DB_NAME=loder-db
+   DB_PASSWORD=fYm0xgADYMv6C0noY1RKp7mPJsRq1qXD
    DB_PORT=5432
-   FRONTEND_URL=https://your-vercel-app.vercel.app
+   FRONTEND_URL=https://www.loderapp.com
    ```
    > **Note**: You'll update `FRONTEND_URL` after deploying to Vercel
 

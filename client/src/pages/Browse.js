@@ -16,6 +16,7 @@ const Browse = () => {
     category: searchParams.get('category') || '',
     search: searchParams.get('search') || '',
     location: searchParams.get('location') || '',
+    listing_type: searchParams.get('listing_type') || '',
   });
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const Browse = () => {
       if (filters.category) params.append('category', filters.category);
       if (filters.search) params.append('search', filters.search);
       if (filters.location) params.append('location', filters.location);
+      if (filters.listing_type) params.append('listing_type', filters.listing_type);
 
       const response = await axios.get(`${API_URL}/equipment?${params.toString()}`);
       setEquipment(response.data);
@@ -80,6 +82,21 @@ const Browse = () => {
                   {isRTL ? cat.name_ar : cat.name}
                 </option>
               ))}
+            </select>
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-charcoal-grey mb-2">
+              {t('listing.listingType')}
+            </label>
+            <select
+              value={filters.listing_type}
+              onChange={(e) => handleFilterChange('listing_type', e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
+            >
+              <option value="">{t('listing.all')}</option>
+              <option value="sell">{t('listing.buy')}</option>
+              <option value="rent">{t('listing.rent')}</option>
             </select>
           </div>
 
