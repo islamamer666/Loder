@@ -47,8 +47,25 @@ const ListEquipment = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    const imageUrls = files.map((file) => URL.createObjectURL(file));
-    setFormData({ ...formData, images: [...formData.images, ...imageUrls] });
+    
+    // Convert files to base64 data URLs instead of blob URLs
+    const imagePromises = files.map((file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          resolve(event.target.result); // This is the base64 data URL
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    });
+    
+    Promise.all(imagePromises).then((base64Images) => {
+      setFormData({ ...formData, images: [...formData.images, ...base64Images] });
+    }).catch((error) => {
+      console.error('Error converting images:', error);
+      setMessage({ type: 'error', text: 'Failed to process images. Please try again.' });
+    });
   };
 
   const removeImage = (index) => {
