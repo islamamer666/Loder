@@ -53,7 +53,7 @@ app.get('/api/categories', async (req, res) => {
 // Get equipment listings with optional filters
 app.get('/api/equipment', async (req, res) => {
   try {
-    const { category, search, location } = req.query;
+    const { category, search, location, listing_type } = req.query;
     let query = 'SELECT e.*, c.name as category_name FROM equipment e LEFT JOIN categories c ON e.category_id = c.id WHERE 1=1';
     const params = [];
     let paramCount = 1;
@@ -73,6 +73,12 @@ app.get('/api/equipment', async (req, res) => {
     if (location) {
       query += ` AND e.location ILIKE $${paramCount}`;
       params.push(`%${location}%`);
+      paramCount++;
+    }
+
+    if (listing_type) {
+      query += ` AND e.listing_type = $${paramCount}`;
+      params.push(listing_type);
       paramCount++;
     }
 
@@ -109,13 +115,41 @@ app.get('/api/equipment/:id', async (req, res) => {
 // Create new equipment listing
 app.post('/api/equipment', async (req, res) => {
   try {
-    const { title, description, category_id, daily_rate, location, owner_name, owner_email, owner_phone, images } = req.body;
+    const { 
+      title, 
+      description, 
+      category_id, 
+      listing_type, 
+      price, 
+      hourly_rate, 
+      monthly_rate, 
+      daily_rate, 
+      location, 
+      owner_name, 
+      owner_email, 
+      owner_phone, 
+      images 
+    } = req.body;
     
     const result = await pool.query(
-      `INSERT INTO equipment (title, description, category_id, daily_rate, location, owner_name, owner_email, owner_phone, images)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      `INSERT INTO equipment (title, description, category_id, listing_type, price, hourly_rate, monthly_rate, daily_rate, location, owner_name, owner_email, owner_phone, images)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
        RETURNING *`,
-      [title, description, category_id, daily_rate, location, owner_name, owner_email, owner_phone, JSON.stringify(images || [])]
+      [
+        title, 
+        description, 
+        category_id, 
+        listing_type || 'rent', 
+        price || null, 
+        hourly_rate || null, 
+        monthly_rate || null, 
+        daily_rate || null, 
+        location, 
+        owner_name, 
+        owner_email, 
+        owner_phone, 
+        JSON.stringify(images || [])
+      ]
     );
     
     res.status(201).json(result.rows[0]);
