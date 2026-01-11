@@ -66,7 +66,7 @@ const Footer = () => {
             </div>
             <p className="text-gray-300 mb-4">
               {isRTL 
-                ? 'منصة رائدة لتأجير معدات البناء. اربط بين أصحاب المعدات والمستأجرين بسهولة وأمان.'
+                ? 'منصة رائدة لتأجير معدات البناء. تربط بين أصحاب المعدات والمستأجرين بسهولة وأمان.'
                 : 'Your premier construction equipment rental marketplace. Connect equipment owners with renters easily and securely.'
               }
             </p>

@@ -39,6 +39,8 @@
     "description": "Description",
     "descriptionPlaceholder": "Describe your equipment, condition, and any special features...",
     "listingType": "Listing Type",
+    "listingTypeBrowse": "Buy/Rent",
+    "listingTypeList": "Sell/Rent",
     "sell": "Sell",
     "rent": "Rent",
     "buy": "Buy",

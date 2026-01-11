@@ -87,7 +87,7 @@ const Browse = () => {
 
           <div className="mb-4">
             <label className="block text-sm font-medium text-charcoal-grey mb-2">
-              {t('listing.listingType')}
+              {t('listing.listingTypeBrowse')}
             </label>
             <select
               value={filters.listing_type}

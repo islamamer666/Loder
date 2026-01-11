@@ -61,13 +61,6 @@ const ListEquipment = () => {
     setLoading(true);
     setMessage({ type: '', text: '' });
 
-    // Validation: If rent, at least one rate must be provided
-    if (formData.listing_type === 'rent' && !formData.hourly_rate && !formData.monthly_rate) {
-      setMessage({ type: 'error', text: t('listing.rateRequired') });
-      setLoading(false);
-      return;
-    }
-
     try {
       await axios.post(`${API_URL}/equipment`, formData);
       setMessage({ type: 'success', text: t('listing.success') });
@@ -122,7 +115,7 @@ const ListEquipment = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-charcoal-grey mb-2">
-              {t('listing.equipmentTitle')} *
+              {t('listing.equipmentTitle')}
             </label>
             <input
               type="text"
@@ -130,20 +123,18 @@ const ListEquipment = () => {
               value={formData.title}
               onChange={handleChange}
               placeholder={t('listing.titlePlaceholder')}
-              required
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-charcoal-grey mb-2">
-              {t('listing.category')} *
+              {t('listing.category')}
             </label>
             <select
               name="category_id"
               value={formData.category_id}
               onChange={handleChange}
-              required
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
             >
               <option value="">{t('listing.selectCategory')}</option>
@@ -157,14 +148,13 @@ const ListEquipment = () => {
 
           <div>
             <label className="block text-sm font-medium text-charcoal-grey mb-2">
-              {t('listing.description')} *
+              {t('listing.description')}
             </label>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
               placeholder={t('listing.descriptionPlaceholder')}
-              required
               rows="5"
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
             />
@@ -172,13 +162,12 @@ const ListEquipment = () => {
 
           <div>
             <label className="block text-sm font-medium text-charcoal-grey mb-2">
-              {t('listing.listingType')} *
+              {t('listing.listingTypeList')}
             </label>
             <select
               name="listing_type"
               value={formData.listing_type}
               onChange={handleChange}
-              required
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
             >
               <option value="rent">{t('listing.rent')}</option>
@@ -189,7 +178,7 @@ const ListEquipment = () => {
           {formData.listing_type === 'sell' ? (
             <div>
               <label className="block text-sm font-medium text-charcoal-grey mb-2">
-                {t('listing.price')} *
+                {t('listing.price')}
               </label>
               <input
                 type="number"
@@ -197,7 +186,6 @@ const ListEquipment = () => {
                 value={formData.price}
                 onChange={handleChange}
                 placeholder={t('listing.pricePlaceholder')}
-                required={formData.listing_type === 'sell'}
                 min="0"
                 step="0.01"
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
@@ -240,7 +228,7 @@ const ListEquipment = () => {
 
           <div>
             <label className="block text-sm font-medium text-charcoal-grey mb-2">
-              {t('listing.location')} *
+              {t('listing.location')}
             </label>
             <input
               type="text"
@@ -248,7 +236,6 @@ const ListEquipment = () => {
               value={formData.location}
               onChange={handleChange}
               placeholder={t('listing.locationPlaceholder')}
-              required
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
             />
           </div>
@@ -261,28 +248,26 @@ const ListEquipment = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-charcoal-grey mb-2">
-                  {t('listing.ownerName')} *
+                  {t('listing.ownerName')}
                 </label>
                 <input
                   type="text"
                   name="owner_name"
                   value={formData.owner_name}
                   onChange={handleChange}
-                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-charcoal-grey mb-2">
-                  {t('listing.ownerEmail')} *
+                  {t('listing.ownerEmail')}
                 </label>
                 <input
                   type="email"
                   name="owner_email"
                   value={formData.owner_email}
                   onChange={handleChange}
-                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-safety-yellow"
                 />
               </div>
