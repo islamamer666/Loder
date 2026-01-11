@@ -25,7 +25,7 @@ const Navbar = () => {
               to="/browse"
               className={`hover:text-safety-yellow transition-colors ${
                 isActive('/browse') ? 'text-safety-yellow' : ''
-              }`}
+              } ${i18n.language === 'ar' ? 'ml-8' : ''}`}
             >
               {t('nav.browse')}
             </Link>
