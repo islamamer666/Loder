@@ -8,9 +8,10 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 const EquipmentDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [equipment, setEquipment] = useState(null);
   const [loading, setLoading] = useState(true);
+  const isRTL = i18n.language === 'ar';
 
   const fetchEquipmentDetails = useCallback(async () => {
     try {
@@ -104,7 +105,7 @@ const EquipmentDetails = () => {
                     <>
                       <p className="text-sm text-gray-600 mb-1">{t('equipment.forSale')}</p>
                       <p className="text-3xl font-bold text-safety-yellow">
-                        ${equipment.price}
+                        {equipment.price ? `${equipment.price} EGP` : ''}
                       </p>
                     </>
                   ) : (
@@ -113,20 +114,20 @@ const EquipmentDetails = () => {
                       <div className="text-3xl font-bold text-safety-yellow">
                         {equipment.hourly_rate && (
                           <div className="mb-2">
-                            ${equipment.hourly_rate}
-                            <span className="text-lg text-gray-600">/hr</span>
+                            {equipment.hourly_rate} EGP
+                            <span className="text-lg text-gray-600">{isRTL ? '/الساعة' : '/hr'}</span>
                           </div>
                         )}
                         {equipment.monthly_rate && (
                           <div>
-                            ${equipment.monthly_rate}
-                            <span className="text-lg text-gray-600">/mo</span>
+                            {equipment.monthly_rate} EGP
+                            <span className="text-lg text-gray-600">{isRTL ? '/الشهر' : '/mo'}</span>
                           </div>
                         )}
                         {!equipment.hourly_rate && !equipment.monthly_rate && equipment.daily_rate && (
                           <div>
-                            ${equipment.daily_rate}
-                            <span className="text-lg text-gray-600">/day</span>
+                            {equipment.daily_rate} EGP
+                            <span className="text-lg text-gray-600">{isRTL ? '/اليوم' : '/day'}</span>
                           </div>
                         )}
                       </div>

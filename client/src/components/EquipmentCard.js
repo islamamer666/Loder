@@ -39,7 +39,7 @@ const EquipmentCard = ({ equipment }) => {
               <>
                 <p className="text-xs text-gray-500 mb-1">{t('equipment.forSale')}</p>
                 <p className="text-xl font-bold text-safety-yellow">
-                  ${equipment.price}
+                  {equipment.price ? `${equipment.price} EGP` : ''}
                 </p>
               </>
             ) : (
@@ -52,10 +52,10 @@ const EquipmentCard = ({ equipment }) => {
                       : t('equipment.monthlyRate')}
                 </p>
                 <p className="text-xl font-bold text-safety-yellow">
-                  {equipment.hourly_rate && `$${equipment.hourly_rate}/hr`}
+                  {equipment.hourly_rate && `${equipment.hourly_rate} EGP${isRTL ? '/الساعة' : '/hr'}`}
                   {equipment.hourly_rate && equipment.monthly_rate && ' / '}
-                  {equipment.monthly_rate && `$${equipment.monthly_rate}/mo`}
-                  {!equipment.hourly_rate && !equipment.monthly_rate && equipment.daily_rate && `$${equipment.daily_rate}/day`}
+                  {equipment.monthly_rate && `${equipment.monthly_rate} EGP${isRTL ? '/الشهر' : '/mo'}`}
+                  {!equipment.hourly_rate && !equipment.monthly_rate && equipment.daily_rate && `${equipment.daily_rate} EGP${isRTL ? '/اليوم' : '/day'}`}
                 </p>
               </>
             )}
